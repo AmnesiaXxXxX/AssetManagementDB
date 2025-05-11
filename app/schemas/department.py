@@ -3,11 +3,8 @@ from app.schemas.asset import AssetResponse
 
 
 class DepartmentBase(BaseModel):
-    __tablename__ = "categories"
-
-    id: int
+    code: str
     name: str
-    description: str
 
 
 class DepartmentCreate(DepartmentBase):

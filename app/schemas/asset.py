@@ -7,9 +7,9 @@ class AssetBase(BaseModel):
     name: str
     inventory_number: str
     cost: float
-    purchase_date: date
-    location: str | None = None
-    status: str = "active"
+    registration_date: date
+    account_number: str
+    responsible_person_id: int
     category_id: int
     department_id: int
 

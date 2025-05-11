@@ -8,7 +8,8 @@ class Department(Base):
     __tablename__ = "departments"
 
     id = Column(Integer, primary_key=True, index=True)
+    code = Column(String(10), unique=True, nullable=False)
     name = Column(String(100), nullable=False)
-    code = Column(String(10), unique=True)
 
     assets = relationship("Asset", back_populates="department")
+    responsible_persons = relationship("ResponsiblePerson", back_populates="department")

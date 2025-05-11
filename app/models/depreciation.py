@@ -1,7 +1,14 @@
-from sqlalchemy import Column, Date, Float, ForeignKey, Integer
+from sqlalchemy import Column, Date, Float, ForeignKey, Integer, Enum
 from sqlalchemy.orm import relationship
+import enum
 
 from app.db.database import Base
+
+
+class DepreciationMethod(enum.Enum):
+    LINEAR = "linear"
+    NONLINEAR = "nonlinear"
+    PRODUCTION = "production"
 
 
 class Depreciation(Base):
@@ -9,7 +16,8 @@ class Depreciation(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     amount = Column(Float, nullable=False)
-    date = Column(Date, nullable=False)
+    period = Column(Date, nullable=False)
+    depreciation_method = Column(Enum(DepreciationMethod), nullable=False)
     asset_id = Column(Integer, ForeignKey("assets.id"))
 
     asset = relationship("Asset", back_populates="depreciation_records")

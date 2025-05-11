@@ -7,8 +7,16 @@ import os
 # Добавляем путь к проекту в PYTHONPATH
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
-# Импортируем Base из вашего приложения
+# Импортируем Base и все модели
 from app.db.database import Base
+from app.models import (
+    Asset,
+    AssetMovement,
+    Category,
+    Department,
+    Depreciation,
+    ResponsiblePerson,
+)
 
 # Это объект MetaData для autogenerate
 target_metadata = Base.metadata
