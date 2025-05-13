@@ -18,7 +18,6 @@ class AssetMovementService:
             operation_type=movement.operation_type,
             asset_id=movement.asset_id,
             amount=movement.amount,
-            document_base=movement.document_base
         )
         db.add(db_movement)
         db.commit()
