@@ -13,4 +13,4 @@ class ResponsiblePerson(Base):
     department_id = Column(Integer, ForeignKey("departments.id"))
 
     department = relationship("Department", back_populates="responsible_persons")
-    assets = relationship("Asset", back_populates="responsible_person")
+    asset_movements = relationship("AssetMovement", back_populates="responsible_person")

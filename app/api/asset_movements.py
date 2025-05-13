@@ -6,7 +6,7 @@ from app.db.database import get_db
 from app.schemas.asset_movement import AssetMovementCreate, AssetMovementUpdate, AssetMovementResponse
 from app.services.asset_movement_service import AssetMovementService
 
-router = APIRouter()
+router = APIRouter(tags=["asset_movements"])
 service = AssetMovementService()
 
 @router.get("", response_model=List[AssetMovementResponse])

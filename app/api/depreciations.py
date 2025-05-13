@@ -6,7 +6,7 @@ from app.db.database import get_db
 from app.schemas.depreciation import DepreciationCreate, DepreciationUpdate, DepreciationResponse
 from app.services.depreciation_service import DepreciationService
 
-router = APIRouter()
+router = APIRouter(tags=["deprecations"])
 service = DepreciationService()
 
 @router.get("", response_model=List[DepreciationResponse])

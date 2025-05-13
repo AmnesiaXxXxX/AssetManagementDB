@@ -7,7 +7,7 @@ from app.db.database import get_db
 from app.schemas.category import CategoryCreate, CategoryResponse, CategoryUpdate
 from app.services.category_service import CategoryService
 
-router = APIRouter(tags=["departments"])
+router = APIRouter(tags=["categories"])
 
 
 @router.post("/", response_model=CategoryResponse)

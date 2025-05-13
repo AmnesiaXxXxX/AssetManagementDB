@@ -11,5 +11,5 @@ class Department(Base):
     code = Column(String(10), unique=True, nullable=False)
     name = Column(String(100), nullable=False)
 
-    assets = relationship("Asset", back_populates="department")
+    asset_movements = relationship("AssetMovement", back_populates="department")
     responsible_persons = relationship("ResponsiblePerson", back_populates="department")

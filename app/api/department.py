@@ -11,7 +11,7 @@ from app.schemas.department import (
 )
 from app.services.department_service import DepartmentService
 
-router = APIRouter(tags=["categories"])
+router = APIRouter(tags=["departments"])
 
 
 @router.post("/", response_model=DepartmentResponse)

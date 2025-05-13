@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from app.schemas.asset import AssetResponse
+from app.schemas.asset_movement import AssetMovementResponse
 
 
 class CategoryBase(BaseModel):
@@ -19,7 +19,7 @@ class CategoryUpdate(BaseModel):
 
 class CategoryResponse(CategoryBase):
     id: int
-    assets: list[AssetResponse]
+    assets: list[AssetMovementResponse]
 
     class Config:
         from_attributes = True

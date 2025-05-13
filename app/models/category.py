@@ -11,4 +11,4 @@ class Category(Base):
     code = Column(String(20), unique=True, nullable=False)
     name = Column(String(100), nullable=False)
 
-    assets = relationship("Asset", back_populates="category")
+    asset_movements = relationship("AssetMovement", back_populates="categories")
