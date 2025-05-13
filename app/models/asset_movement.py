@@ -1,24 +1,16 @@
-from sqlalchemy import (
-    Column,
-    Integer,
-    String,
-    ForeignKey,
-    Date,
-    Float,
-    UniqueConstraint,
-)
-
-from sqlalchemy.orm import relationship
 import enum
 
 from app.db.database import Base
+from sqlalchemy import (
+    Column,
+    Date,
+    ForeignKey,
+    Integer,
+    String,
+    UniqueConstraint,
+)
+from sqlalchemy.orm import relationship
 
-
-class OperationType(enum.Enum):
-    RECEIPT = "receipt"
-    TRANSFER = "transfer"
-    WRITE_OFF = "write_off"
-    SALE = "sale"
 
 
 class AssetMovement(Base):
@@ -30,12 +22,11 @@ class AssetMovement(Base):
     name = Column(String(100), nullable=False)
     inventory_number = Column(String(50), unique=True, index=True)
     registration_date = Column(Date, nullable=False)
-    cost = Column(Float, nullable=False)
     account_number = Column(String(20), nullable=False)
-
     responsible_person_id = Column(Integer, ForeignKey("responsible_persons.id"))
     category_id = Column(Integer, ForeignKey("categories.id"))
     department_id = Column(Integer, ForeignKey("departments.id"))
+    operation_type = Column(ForeignKey("operation_type.id"))
     
     responsible_person = relationship("ResponsiblePerson", back_populates="asset_movements")
     depreciation_records = relationship("Depreciation", back_populates="asset_movements")

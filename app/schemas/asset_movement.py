@@ -1,6 +1,6 @@
 from datetime import date
 from pydantic import BaseModel
-
+from app.models.operation_type import OperationTypes
 
 class AssetMovementBase(BaseModel):
     name: str
@@ -11,6 +11,7 @@ class AssetMovementBase(BaseModel):
     responsible_person_id: int
     category_id: int
     department_id: int
+    operation_type: OperationTypes
 
 
 class AssetMovementCreate(AssetMovementBase):
