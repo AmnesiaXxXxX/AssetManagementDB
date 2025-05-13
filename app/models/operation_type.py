@@ -1,8 +1,8 @@
-from sqlalchemy import (
-    Column, Integer, Enum as SQLAlchemyEnum
-)
 from enum import Enum
+
 from app.db.database import Base
+from sqlalchemy import Column, Integer, String
+from sqlalchemy import Enum as SQLAlchemyEnum
 
 
 class OperationTypes(Enum):
@@ -14,6 +14,5 @@ class OperationTypes(Enum):
 
 class OperationType(Base):
     __tablename__ = "operation_type"
-    id = Column(Integer, primary_key=True)
-    operation_type = Column(SQLAlchemyEnum(OperationTypes), nullable=False)
-    
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    operation_type = Column(String, SQLAlchemyEnum(OperationTypes), nullable=False)

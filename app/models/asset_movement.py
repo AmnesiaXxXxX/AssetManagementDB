@@ -26,7 +26,7 @@ class AssetMovement(Base):
     responsible_person_id = Column(Integer, ForeignKey("responsible_persons.id"))
     category_id = Column(Integer, ForeignKey("categories.id"))
     department_id = Column(Integer, ForeignKey("departments.id"))
-    operation_type = Column(ForeignKey("operation_type.id"))
+    operation_type = Column(ForeignKey("operation_type.operation_type"))
     
     responsible_person = relationship("ResponsiblePerson", back_populates="asset_movements")
     depreciation_records = relationship("Depreciation", back_populates="asset_movements")
