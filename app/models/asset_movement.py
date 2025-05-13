@@ -20,6 +20,5 @@ class AssetMovement(Base):
     operation_type = Column(Enum(OperationType), nullable=False)
     asset_id = Column(Integer, ForeignKey("assets.id"))
     amount = Column(Float, nullable=False)
-    document_base = Column(String(200))
 
     asset = relationship("Asset", back_populates="movements")
