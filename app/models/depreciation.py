@@ -18,6 +18,6 @@ class Depreciation(Base):
     amount = Column(Float, nullable=False)
     period = Column(Date, nullable=False)
     depreciation_method = Column(Enum(DepreciationMethod), nullable=False)
-    asset_id = Column(Integer, ForeignKey("assets.id"))
+    asset_id = Column(Integer, ForeignKey("asset_movements.id"))
 
-    asset = relationship("Asset", back_populates="depreciation_records")
+    asset = relationship("asset_movements", back_populates="depreciation_records")

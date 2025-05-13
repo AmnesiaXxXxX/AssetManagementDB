@@ -2,7 +2,7 @@ from typing import Any, BinaryIO, Dict, List
 import pandas as pd
 from pydantic import FilePath
 from sqlalchemy.orm import Session
-from app.models.asset import Asset
+from app.models.asset_movement import AssetMovement as Asset
 from app.models.category import Category
 from datetime import datetime
 from io import BytesIO
