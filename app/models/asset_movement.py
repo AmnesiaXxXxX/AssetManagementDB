@@ -1,5 +1,3 @@
-import enum
-
 from app.db.database import Base
 from sqlalchemy import (
     Column,
@@ -10,7 +8,6 @@ from sqlalchemy import (
     UniqueConstraint,
 )
 from sqlalchemy.orm import relationship
-
 
 
 class AssetMovement(Base):
@@ -27,8 +24,12 @@ class AssetMovement(Base):
     category_id = Column(Integer, ForeignKey("categories.id"))
     department_id = Column(Integer, ForeignKey("departments.id"))
     operation_type = Column(ForeignKey("operation_type.operation_type"))
-    
-    responsible_person = relationship("ResponsiblePerson", back_populates="asset_movements")
-    depreciation_records = relationship("Depreciation", back_populates="asset_movements")
+
+    responsible_person = relationship(
+        "ResponsiblePerson", back_populates="asset_movements"
+    )
+    depreciation_records = relationship(
+        "Depreciation", back_populates="asset_movements"
+    )
     categories = relationship("Category", back_populates="asset_movements")
     department = relationship("Department", back_populates="asset_movements")
