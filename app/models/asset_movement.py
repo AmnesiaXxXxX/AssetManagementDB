@@ -17,14 +17,17 @@ class AssetMovement(Base):
     )
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String(100), nullable=False)
-    inventory_number = Column(String(50), unique=True, index=True)
     registration_date = Column(Date, nullable=False)
-    account_number = Column(String(20), nullable=False)
     responsible_person_id = Column(Integer, ForeignKey("responsible_persons.id"))
     category_id = Column(Integer, ForeignKey("categories.id"))
     department_id = Column(Integer, ForeignKey("departments.id"))
-    operation_type = Column(ForeignKey("operation_type.operation_type"))
-
+    operation_type_id = Column(
+        Integer, ForeignKey("operation_type.operation_type_id")
+    )
+    operation_type = relationship(
+        "OperationType",
+        foreign_keys=[operation_type_id],  # Updated field name in relationship argument
+    )
     responsible_person = relationship(
         "ResponsiblePerson", back_populates="asset_movements"
     )
